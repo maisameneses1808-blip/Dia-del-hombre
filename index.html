@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regalito</title>
+    <link rel="icon" type="image/png" href="rosahombres.png">
+</head>
+<body style="background-color: (124, 178, 222);">
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #0d47a1, #42a5f5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        text-align: center;
+        color: white;
+    }
+
+    .contenedor {
+        width: 90%;
+        max-width: 400px;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 25px;
+        border-radius: 20px;
+        backdrop-filter: blur(10px);
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+
+    .botones {
+        margin-top: 40px;
+        position: relative;
+        height: 200px;
+    }
+
+    button {
+        width: 100%;
+        padding: 15px;
+        font-size: 20px;
+        margin-top: 15px;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+    }
+
+    #si {
+        background-color: #1565c0;
+        color: white;
+        transition: transform 0.2s;
+    }
+
+    #no {
+        background-color: #64b5f6;
+        color: #0d47a1;
+        position: absolute;
+        left: 0;
+        top: 80px;
+    }
+
+    #mensaje {
+        display: none;
+        font-size: 20px;
+        margin-top: 30px;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="contenedor">
+    <h1>¿Quieres ver tu regalo del Día del Hombre?</h1>
+
+    <div class="botones">
+        <button id="si">Sí</button>
+        <button id="no">No</button>
+    </div>
+
+    <div id="mensaje">
+        💙 Feliz Día del Hombre 💙
+
+Hoy quiero recordarles lo valiosos que son.
+No solo por lo que hacen, sino por lo que son: compañeros, amigos, apoyo y alegría en cada momento.
+
+Gracias por cada risa, por su energía, por su forma de hacer más llevaderos los días y por todo lo que aportan al grupo.
+
+Sigan siendo auténticos, fuertes, respetuosos y con ese brillo que los hace únicos.
+
+De verdad, el salón no sería lo mismo sin ustedes. ✨! 💙
+    </div>
+</div>
+
+<script>
+let contador = 0;
+let tamaño = 1;
+
+const botonSi = document.getElementById("si");
+const botonNo = document.getElementById("no");
+const mensaje = document.getElementById("mensaje");
+
+// Botón SÍ crece
+botonSi.addEventListener("click", () => {
+    contador++;
+    tamaño += 0.25;
+    botonSi.style.transform = `scale(${tamaño})`;
+
+    if (contador >= 5) {
+        document.querySelector(".botones").style.display = "none";
+        mensaje.style.display = "block";
+    }
+});
+
+// Botón NO se mueve
+botonNo.addEventListener("touchstart", moverNo);
+botonNo.addEventListener("click", moverNo);
+
+function moverNo() {
+    const ancho = window.innerWidth - 120;
+    const alto = window.innerHeight - 200;
+
+    const x = Math.random() * ancho;
+    const y = Math.random() * alto;
+
+    botonNo.style.left = x + "px";
+    botonNo.style.top = y + "px";
+}
+</script>
+</body>
+</html>
